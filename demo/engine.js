@@ -1,5 +1,5 @@
 const fs = require('fs');
-const cron = require('node-cron');
+const cron = require('./node_modules/node-cron/dist/cjs/node-cron');
 const nodes = {
   httpRequest: require('./nodes/httpRequest'),
   sendEmail: require('./nodes/sendEmail'),
