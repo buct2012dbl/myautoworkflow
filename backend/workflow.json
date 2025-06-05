@@ -1,0 +1,33 @@
+{
+  "nodes": [
+    {
+      "id": "timer1",
+      "type": "timer",
+      "config": { "cron": "*/10 * * * * *" } // 每10秒执行一次，便于测试
+    },
+    {
+      "id": "fetch1",
+      "type": "fetchXhsTrends",
+      "config": {}
+    },
+    {
+      "id": "ai1",
+      "type": "aiGenerateContent",
+      "config": {
+        "openaiApiKey": "YOUR_OPENAI_API_KEY"
+      }
+    },
+    {
+      "id": "post1",
+      "type": "postToXhs",
+      "config": {
+        "xhsCookie": "YOUR_XHS_COOKIE"
+      }
+    }
+  ],
+  "edges": [
+    { "from": "timer1", "to": "fetch1" },
+    { "from": "fetch1", "to": "ai1" },
+    { "from": "ai1", "to": "post1" }
+  ]
+}
